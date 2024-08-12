@@ -9,19 +9,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      beerCatalog: [],
-      buttonText: false
-      
+      beerCatalog: []
     }
-    
   }
-
-  handleClick = () => {
-    this.setState({buttonText: !this.state.buttonText})
-  }
-
-
-  
 
   componentDidMount() {
   axios.get('https://api.openbrewerydb.org/v1/breweries')
@@ -38,12 +28,14 @@ class App extends Component {
       <header className="App-header">
         <ol>{this.state.beerCatalog.map((beer, index) => {
           return (
-            <BeerCard key={index} name={beer.name} brewery_type={beer.brewery_type} address_1={beer.address_1} city={beer.city} state={beer.state} postal_code={beer.postal_code} phone={beer.phone} website_url={beer.website_url} buttonText={this.state.buttonText ? "🥰 Liked!" : "🙂 Like?"} handleClick={this.handleClick}/> 
+            <BeerCard key={index} name={beer.name} />
             
           )
         })}</ol>
         
-    
+        <p>
+          I'm nothing if not vacant.
+        </p>
         
       </header>
     </div>
